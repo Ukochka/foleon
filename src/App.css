@@ -38,5 +38,11 @@
 }
 
 .CardsField {
+  display: block;
+}
+
+.SearchResultField {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
