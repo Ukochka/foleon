@@ -1,9 +1,10 @@
 import React from "react";
 import "./styles.scss";
 
-const Header = ({}) => (
+const Header = ({ children, t }) => (
   <div className="Header">
-    <h1>Resources</h1>
+    <h1>{t("resourcesHeader")}</h1>
+    {children}
   </div>
 );
 

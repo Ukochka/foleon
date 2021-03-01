@@ -1,3 +1,6 @@
+import FormData from "form-data";
+import fetch from "node-fetch";
+
 let token = null;
 const getAccessToken = async () => {
   async function fetchAndParse() {
@@ -19,7 +22,6 @@ const getAccessToken = async () => {
   }
 
   token = fetchAndParse();
-  console.log("BLA BLA BLA ", token);
   return await token;
 };
 
@@ -32,6 +34,7 @@ export const repeat = async (functionToRepeat, ...args) => {
   }
 };
 export const getToken = () => getAccessToken();
+
 export const fetchWithOAuth = async (resource, init) => {
   if (!init) {
     init = {};

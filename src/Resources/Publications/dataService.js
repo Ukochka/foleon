@@ -1,27 +1,32 @@
-import { fetchWithOAuth } from "../../utils/oauth";
+import qs from "qs";
 
-export const getAllPublications = async () => {
-  const response = await fetchWithOAuth(
-    "https://api.foleon.com/v2/magazine/edition",
+export const getPublications = async (page, limit) => {
+  const response = await fetch(
+    `http://localhost:3000/v2/magazine/edition?page=${page}&limit=${limit}`,
     {
       method: "GET",
     }
   );
-
   const projectsJson = await response.json();
   return projectsJson._embedded.edition;
 };
 
-// export const getAllPublications = () =>
-//   fetch("https://api.foleon.com/v2/magazine/edition", {
-//     method: "GET",
-//     headers: {
-//       Authorization: "Bearer b94a01bdf4ccbb1d1d7f6f9dbc1a24a49e562936",
-//     },
-//   })
-//     .then((res) => {
-//       return res.json();
-//     })
-//     .then((res) => {
-//       return res._embedded.edition;
-//     });
+export const getPublicationPerProject = async (projectId, perpage = 20) => {
+  const url = `http://localhost:3000/v2/magazine/edition?page=1&limit=${perpage}`;
+  const filter =
+    "&" +
+    qs.stringify({
+      filter: [
+        {
+          field: "title",
+          type: "eq",
+          value: projectId,
+        },
+      ],
+    });
+  const response = await fetch(`${url}${projectId === null ? "" : filter}`, {
+    method: "GET",
+  });
+  const projectsJson = await response.json();
+  return projectsJson._embedded.edition;
+};

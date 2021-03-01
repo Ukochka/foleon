@@ -1,0 +1,9 @@
+{
+    "baseUrl": "http://localhost:3000",
+    "projectId": "foleon",
+    "viewportWidth": 1024,
+    "viewportHeight": 768,
+    "video": true,
+    "videoUploadOnPasses": false,
+    "experimentalFetchPolyfill": true
+}

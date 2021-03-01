@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Resource Page for Foleon
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is test assignment for Fullstack position in Foleon
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+### Installation and run
 
-### `yarn start`
+    yarn install
+    yarn build && node  --experimental-modules ./server/server.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Testing
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Cypress - integration tests
 
-### `yarn test`
+`yarn cy:open` - opens Cypress to select which tests to run. Make sure your application is running before launching `yarn cy:open`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Jest - unit and React component tests
 
-### `yarn build`
+**`yarn test`** - executes all tests and re-runs affected tests when you change project files.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Folder structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    |--cypress              // cypress tests
+    |--server               // server part of application
+    |--src                  // All components and functionality
+    |----components         // Components of the application
+    |----Resources          // API to get resources from server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Translation
 
-### `yarn eject`
+You can specify language and add your trnslation to the file `locales`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Description of the solution
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+When you first time open resource page all projects are called from server and added to tabs objects. It is done to be able to filter publications related with specific project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Also first 20 publications are loaded and displayed at All Publications tab. If you want to load more you can scroll down and more publications will be loaded
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You can filter by name loaded publications using search input
