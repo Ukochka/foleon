@@ -6,11 +6,8 @@ const getAccessToken = async () => {
   async function fetchAndParse() {
     const formData = new FormData();
     formData.append("grant_type", "client_credentials");
-    formData.append("client_id", "avwi48OZ0X");
-    formData.append(
-      "client_secret",
-      "7b25d5872f7f5be38a765704dc875a83272aa69b3216054425aef4998e347f58"
-    );
+    formData.append("client_id", process.env.FOLEON_CLIENT_ID);
+    formData.append("client_secret", process.env.FOLEON_CLIENT_SECRET);
     const init = { method: "POST", body: formData };
     const response = await fetch("https://api.foleon.com/oauth", init);
     const json = await response.json();
